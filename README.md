@@ -53,14 +53,6 @@ Rename .env-template to .env
 GOOGLE_API_KEY=your_gemini_api_key_here
 </code></pre>
 
-<h2>Start Backend</h2>
-<pre><code>python main.py</code></pre>
-<p>Visit: <a href="http://localhost:8082/docs">http://localhost:8082/docs</a></p>
-
-<h2>Start Frontend</h2>
-<pre><code>python src/ragchallenge/gui/enhanced_main.py</code></pre>
-<p>Visit: <a href="http://localhost:7860/">http://localhost:7860/</a></p>
-
 <h2>System Architecture</h2>
 <h3>Document Processing Pipeline</h3>
 <p><b>Phase 1:</b> Upload & Extract</p>
@@ -79,4 +71,5 @@ GOOGLE_API_KEY=your_gemini_api_key_here
 <hr>
 <h2>⭐ RAG_KB</h2>
 <p>High-performance, modular, scalable, and user-friendly knowledge extraction system.</p>
+
 

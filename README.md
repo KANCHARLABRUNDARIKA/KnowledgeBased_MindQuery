@@ -1,210 +1,88 @@
-# RAG-based Knowledge Extraction System
-
+<h1>RAG-based Knowledge Extraction System</h1>
+<p>
 A flexible and scalable Retrieval-Augmented Generation (RAG) system that allows users to upload documents (PDF, DOCX, TXT, MD) and ask questions about their content. The system uses advanced techniques like query expansion and vector search to provide accurate, context-aware answers powered by Google Gemini.
-
-<!-- toc -->
-
-## Overview
-
-This repository contains a complete RAG-based question-answering system with:
-- **Document Upload & Processing**: Upload any PDF/DOCX/TXT/MD document
-- **Intelligent Chunking**: Automatic text splitting and embedding generation
-- **Vector Search**: Semantic search using ChromaDB and HuggingFace embeddings
-- **Query Expansion**: Enhanced retrieval through paraphrasing
-- **AI-Powered Answers**: Response generation using Google Gemini
-- **Personal Knowledge Bases**: Each user gets their own isolated document store
-- **RESTful API**: Built with FastAPI for easy integration
-- **User-Friendly GUI**: Interactive Gradio interface
-
-
-<p align="center">
-  <img src="./static/system_architecture.png" alt="Alt text" width="600" />
 </p>
 
-### Technology Stack
+<h2>Overview</h2>
+<p>This repository contains a complete RAG-based question-answering system with:</p>
+<ul>
+  <li><b>Document Upload & Processing</b>: Upload any PDF/DOCX/TXT/MD document</li>
+  <li><b>Intelligent Chunking</b>: Automatic text splitting and embedding generation</li>
+  <li><b>Vector Search</b>: Semantic search using ChromaDB and HuggingFace embeddings</li>
+  <li><b>Query Expansion</b>: Enhanced retrieval through paraphrasing</li>
+  <li><b>AI-Powered Answers</b>: Response generation using Google Gemini</li>
+  <li><b>Personal Knowledge Bases</b>: Each user gets their own isolated document store</li>
+  <li><b>RESTful API</b>: Built with FastAPI for easy integration</li>
+  <li><b>User-Friendly GUI</b>: Interactive Gradio interface</li>
+</ul>
 
-- **API Framework**: [FastAPI](https://fastapi.tiangolo.com/) - High-performance REST API
-- **User Interface**: [Gradio](https://gradio.app/) - Interactive web interface
-- **RAG Framework**: [LangChain](https://langchain.com/) - RAG pipeline orchestration
-- **LLM**: Google Gemini - AI-powered answer generation
-- **Embeddings**: HuggingFace Transformers - Semantic document encoding
-- **Vector Store**: ChromaDB - Efficient similarity search
+<h2>Technology Stack</h2>
+<ul>
+  <li><b>API Framework:</b> FastAPI - High-performance REST API</li>
+  <li><b>User Interface:</b> Gradio - Interactive web interface</li>
+  <li><b>RAG Framework:</b> LangChain - RAG pipeline orchestration</li>
+  <li><b>LLM:</b> Google Gemini</li>
+  <li><b>Embeddings:</b> HuggingFace Transformers</li>
+  <li><b>Vector Store:</b> ChromaDB</li>
+</ul>
 
+<h2>User Flow</h2>
+<ol>
+  <li>Upload Document</li>
+  <li>Document Processing</li>
+  <li>Vector Storage</li>
+  <li>Ask Questions</li>
+  <li>RAG Retrieval</li>
+  <li>AI Response</li>
+  <li>Get Answer</li>
+</ol>
 
-## User Flow
+<h2>🎥 Demo Video</h2>
+<p>Watch the system in action:</p>
+<p><a href="https://drive.google.com/file/d/1Tzg4nhgU_Eg74ARPJRMVIxhjgJ9y7JPY/view" target="_blank">
+👉 Click here to watch the demo video
+</a></p>
 
-1. **Upload Document**: User uploads a PDF/DOCX/TXT/MD file via GUI or API
-2. **Document Processing**: System extracts text and splits into chunks
-3. **Vector Storage**: Chunks are embedded and stored in user's personal vector database
-4. **Ask Questions**: User submits questions about their uploaded documents
-5. **RAG Retrieval**: System retrieves relevant chunks using semantic search
-6. **AI Response**: Google Gemini generates accurate answers based on retrieved context
-7. **Get Answer**: User receives a well-formatted, context-aware response
+<h2>Installation</h2>
+<pre><code>git clone https://github.com/julianschelb/RAG-based-Knowledge-Extraction-Challenge
+cd RAG-based-Knowledge-Extraction-Challenge
 
+<h3>Configure API Keys</h3>
+<pre><code>
+Rename .env-template to .env
+GOOGLE_API_KEY=your_gemini_api_key_here
+</code></pre>
 
-## Screenshots
+<h2>Start Backend</h2>
+<pre><code>python main.py</code></pre>
+<p>Visit: <a href="http://localhost:8082/docs">http://localhost:8082/docs</a></p>
 
-**User Interface:**
-!["User Interface"](./static/screenshot_gui.png)
+<h2>Start Frontend</h2>
+<pre><code>python src/ragchallenge/gui/enhanced_main.py</code></pre>
+<p>Visit: <a href="http://localhost:7860/">http://localhost:7860/</a></p>
 
-**API Endpoints:**
-!["API Endpoints"](./static/screenshot_api.png)
+<h2>System Architecture</h2>
+<h3>Document Processing Pipeline</h3>
+<p><b>Phase 1:</b> Upload & Extract</p>
+<p><b>Phase 2:</b> Chunk & Embed</p>
+<p><b>Phase 3:</b> Question Answering</p>
 
+<h2>Retrieval and Question-Answering Process</h2>
+<ol>
+  <li>User enters query</li>
+  <li>Query Expansion</li>
+  <li>Vector Retrieval</li>
+  <li>Context + Query → LLM</li>
+  <li>Generate Answer</li>
+</ol>
 
-## Installation
+<h2>Further Thoughts on Scalability</h2>
+<ul>
+  <li><b>Microservices Architecture</b></li>
+  <li><b>Vendor-Agnostic Abstraction Layer</b></li>
+  <li><b>Controller/Worker Scaling Model</b></li>
+</ul>
 
-This setup assumes that Python 3.10+ is installed. If not, you can use [pyenv](https://github.com/pyenv/pyenv#installation) to manage your Python versions.
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/julianschelb/RAG-based-Knowledge-Extraction-Challenge
-   cd RAG-based-Knowledge-Extraction-Challenge
-   ```
-
-2. **Install Poetry for dependency management**:
-   ```bash
-   pip install poetry
-   ```
-
-3. **Install project dependencies**:
-   ```bash
-   poetry install
-   ```
-
-4. **Configure API Keys**:
-   - Rename `.env-template` to `.env`
-   - Add your Google Gemini API key:
-     ```
-     GOOGLE_API_KEY=your_gemini_api_key_here
-     ```
-   - Get your API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
-
-5. **Optional - Set up HuggingFace credentials** (for embedding models):
-   ```bash
-   huggingface-cli login
-   ```
-   Get your token from [Hugging Face account settings](https://huggingface.co/settings/tokens)
-
-## Start Backend
-
-To start the REST API, run:
-
-```bash
-python main.py
-```
-
-The server will start on port 8082. Access the API documentation at: [http://localhost:8082/docs](http://localhost:8082/docs)
-
-### Key API Endpoints
-
-- `POST /documents/upload` - Upload a document (PDF/DOCX/TXT/MD)
-- `GET /documents/list/{user_id}` - List all uploaded documents
-- `POST /generate-answer` - Ask questions about uploaded documents
-- `DELETE /documents/{user_id}/{document_name}` - Delete a document
-
-## Start Frontend
-
-To start the user interface:
-
-```bash
-python src/ragchallenge/gui/enhanced_main.py
-```
-
-The GUI will be available at: [http://localhost:7860/](http://localhost:7860/)
-
-
-## System Architecture
-
-### Document Processing Pipeline
-
-**Phase 1: Document Upload & Text Extraction**
-1. User uploads a document (PDF, DOCX, TXT, or MD)
-2. System extracts raw text from the document
-3. Text is validated for content
-
-**Phase 2: Chunking & Embedding**
-1. Documents are split into manageable chunks (1000 chars with 200 char overlap)
-2. Metadata is attached (filename, chunk_id, document_type)
-3. Each chunk is converted to embeddings using HuggingFace models
-4. Chunks are stored in user's personal ChromaDB vector store
-
-**Phase 3: Question Answering**
-1. User submits a question
-2. Question is expanded/paraphrased for better retrieval
-3. Similar chunks are retrieved from vector store using semantic search
-4. Retrieved context is sent to Google Gemini
-5. Gemini generates a comprehensive answer based on the context
-6. Response is returned to the user
-
-### Key Features
-
-- **No Hardcoding**: System works with ANY document type - no domain-specific assumptions
-- **Personal Knowledge Bases**: Each user gets isolated storage via unique user_id
-- **Combined Search**: Option to search both personal and default knowledge bases
-- **Intelligent Retrieval**: Query expansion improves search accuracy
-- **Context-Aware**: Gemini only answers based on provided document context
-
-**Example of a processed document:**
-
-The final document is augmented with the original section title and hypothetical questions.
-
-```
-Page title: Initializing A Repository In An Existing Directory
-Filename: git tutorial
-
-Related Questions:
-- 1. If I have a directory that is not currently being version controlled with Git, what command do I type to start controlling it with Git? (Answer: $ git init)
-- 2. Where in the file system should I navigate to in order to type the command to start controlling my project directory with Git? (Answer: To the project directory)
-- 3. How do the directions for navigating to the project directory differ depending on the operating system? (Answer:
-
-Page Content:
-If you have a project directory that is currently not under version control and you want to start controlling it with Git, you first need to go to that project's directory. If you've never done this, it looks a little different depending on which system you're running: for Linux:
-$ cd /home/user/my_project for macOS:
-$ cd /Users/user/my_project for Windows:
-$ cd C:/Users/user/my_project and type:
-$ git init This creates a new subdirectory named .git that contains all of your necessary repository files - a Git repository skeleton. At this point, nothing in your project is tracked yet. See Git Internals for 26 more information about exactly what files are contained in the .git directory you just created.
-
-If you want to start version-controlling existing files (as opposed to an empty directory), you should probably begin tracking those files and do an initial commit. You can accomplish that with a few git add commands that specify the files you want to track, followed by a git commit:
-$ git add *.c
-```
-
-### Retrieval and Question-Answering Process
-
-
-
-!["Pipeline"](./static/question-answering-pipeline.png)
-
-
-1. The user enters a query.
-2. To perform `Query Expansion`, we ask a model to paraphrase the original query, generating three alternative queries. The intuition is that the model can generate queries focusing on different aspects of the input prompt.
-3. For each paraphrased query, as well as the original one, we retrieve *k* documents from the vector store.
-4. The context and the original query are combined in a question answering prompt.
-5. Finally, a large language model (LLM) is asked to use the combined context to answer the original query.
-
-
-**Example for generated Hypothetical Questions:**
-
-```
-Document: Conda is an open-source package management system and environment management system that runs on Windows, macOS, and Linux. Conda quickly installs, runs, and updates packages and their dependencies.
-
-
-Generated Hypothetical Questions:
-1. How does Conda differ from other package management systems in terms of installation and updating procedures?
-2. Can you describe the cross-platform compatibility of Conda, and how does it affect its usability for developers working on different operating systems?
-3. How does Conda ensure that the dependencies of a package are also installed and updated alongside it, and what impact does this have on the overall package management experience?
-```
-
-## Further Thoughts on System Design and Scalability
-
-To enhance scalability in the current system, I recommend the following architectural changes based on best practices for designing scalable systems:
-
-- **Microservices Architecture**: Transitioning to a microservices approach by decoupling services based on their specific concerns will allow for more efficient scaling and faster deployment of new features. This will also enable independent scaling of each service, with a load balancer to distribute traffic across service instances, improving overall system performance under high load.
-
-- **Vendor-Agnostic Abstraction Layer**: Introducing a common interface through wrapper classes for LLM and database vendors will decouple the system from specific vendors. This not only provides flexibility in switching vendors without significant refactoring but also allows scaling across multiple providers to meet demand more effectively.
-
-- **Controller/Worker Scaling Model**: Implementing a controller/worker architecture will provide dynamic vertical scaling capabilities. Each LLM worker instance would handle a specific model, and the controller could dynamically assign additional worker instances as needed. This ensures efficient resource allocation, whether adding workers for different models or increasing capacity to handle surges in demand for existing models.
-
-
-!["Pipeline"](./static/scaleable_system_architecture.png)#   R A G _ K B 
- 
- 
+<hr>
+<h2>⭐ RAG_KB</h2>
+<p>High-performance, modular, scalable, and user-friendly knowledge extraction system.</p>

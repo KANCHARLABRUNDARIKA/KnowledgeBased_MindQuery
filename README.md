@@ -76,13 +76,7 @@ GOOGLE_API_KEY=your_gemini_api_key_here
   <li>Generate Answer</li>
 </ol>
 
-<h2>Further Thoughts on Scalability</h2>
-<ul>
-  <li><b>Microservices Architecture</b></li>
-  <li><b>Vendor-Agnostic Abstraction Layer</b></li>
-  <li><b>Controller/Worker Scaling Model</b></li>
-</ul>
-
 <hr>
 <h2>⭐ RAG_KB</h2>
 <p>High-performance, modular, scalable, and user-friendly knowledge extraction system.</p>
+
